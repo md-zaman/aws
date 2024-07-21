@@ -1,7 +1,7 @@
 # SQS
 Messaging: When we deploy multiple apps, they will need to communicate with each other.
 There are two patteerns of the app communication:
-    a. Synchronous Communication (app to app)
+    a. Synchronous Communication (app to app) \
     b. Asynchronous/ Event Based (app to queue to app)
 
     Understanding with a few lines:
@@ -26,7 +26,7 @@ b. Attributes:
 c. Can have duplicate msgs (at least once delivery, occasionally)
 d. Can have out of order msgs
 
-Ref. slide in this same directory. Time is short
+Ref. slide in this same directory. Time is short. Page number 382
 
 
 
