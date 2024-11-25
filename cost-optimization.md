@@ -25,6 +25,9 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html
 
 Prefer RI instead of On-Demand to save cost
 
-You can also go for scheduled RI. You might not save much in this case
+You can also go for scheduled RI. You might not save much in this case however.
+
+### 11. Reserved Instance Details
+Revise afterwards. Not clear.
 
 
