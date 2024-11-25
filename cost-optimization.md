@@ -30,4 +30,8 @@ You can also go for scheduled RI. You might not save much in this case however.
 ### 11. Reserved Instance Details
 Revise afterwards. Not clear.
 
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-scope.html
+https://aws.amazon.com/blogs/aws/new-instance-size-flexibility-for-ec2-reserved-instances/
+
+### 12. Reduce EC2, Lambda, and Fargate Costs using Compute Savings Plans
 
