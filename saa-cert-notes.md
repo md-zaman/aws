@@ -118,13 +118,6 @@ format of the keys.
 
 
 
-
-
-
-
-
-
-
 # SQS
 Messaging: When we deploy multiple apps, they will need to communicate with each other.
 There are two patteerns of the app communication:
@@ -155,6 +148,138 @@ d. Can have out of order msgs
 
 Ref. slide in this same directory. Time is short. Page number 382
 
+# Section 19: Serverless Overviews from a Solution Architect Perspective
+
+## 215. About the Serverless Section
+
+Not so important
+Main things:
+
+1. In serverless, developers don't have to manage servers. We deploy `code`. We deploy 
+`functions`.
+
+## 216. Serverless Introduction
+
+1. Serverless in AWS:
+    - AWS Lambda
+    - DynamoDB
+    - AWS Cognito
+    - AWS API Gateway
+    - Amazon S3
+    - AWS SNS & SQS
+    - AWS Kinesis Dta Firehose
+    - Aurora Serverless
+    - Step Functions
+    - Fargate
+
+## 217. Lambda Overview
+
+1. Why AWS Lambda
+
+    In Amazon EC2:
+    - Virtual Servers in the Cloud
+    - Limited by the RAM and CPU
+    - Continuously running
+    - Scaling means intervention to add/remove servers
+
+    In Amazon Lambda:
+    - Virtual functions - no servers to manage
+    - Limited by time - short executions
+    - Run on-demand
+    - Scaling is automated
+
+2. Benefits:
+    - Easy Pricing
+        - Pay per request and compute time
+        - Free tier of 1,000,000 AWS Lambda requests and 4000,000 GBs of compute time
+    - Integrated with the whole AWS suite of services
+    - Integrated with many programming languages
+    - Easy monitoring through AWS CloudWatch
+    - Easy to get more resources per functions (up to 10GB of RAM!)
+    - Increasing RAM will also improve CPU and network.
+
+    AWS Lambda language support
+    - Node.js (JavaScript)
+    - Python
+    - Java
+    - C# (.NET Core)/Powershell
+    - Ruby
+    - Custom Runtime API (Community supported, example Rust or Golang)
+    - Lambda Container Image
+        - The container image must implement the Lambda Runtime API
+        - ECS/Fargate is preferred for running arbitrary Docker images
+
+    AWS Lambda Integrations - Main Ones
+    API Gateway - This is to create APIs and invoke Lambda functions
+    Kinesis - Will be used in Lambda to do some data transformation on the fly.
+    DynamoDB - will be used to create some triggers whenever somethings happens on our 
+    database, a Lambda function will be triggered.
+    S3 - A lambda function will be triggered whenever a file is created on our s3.
+    Cloudfront - This will be attached to lambda 
+    CloudWatch Events EventBridge - This is whenever things happen and our infrastructure on AWS
+    and we want to be able to react to things. E.g., say, we have code pipeline state changes
+    and we want to do some automation based on it, we can use a Lambda function.
+    CloudWatch Logs - to stream the logs wherever you want
+    SNS - to reach to notifications in your SNS topics
+    SQS - to process msgs from your SQS queues.
+    Cognito - handles user authentication and authorisation whenever user logs in to database
+
+    Example: Serverless Thumbnail creation
+
+    We can create a trigger for Lambda to create a thumbnail when an image is uploaded in S3
+    so new thumbnail is created and with this trigger the lambda function 
+
+    Example: Serverless CRON Job
+
+    We can create a CloudWatch Event that will be triggered everyone hour
+
+## 218. Lambda Hands-on
+
+After 1 million you get cost
+
+Explained how lambda works
+
+## 219. Lambda Limits
+
+AWS Lambda Limits to know - per region
+
+Execution:
+    - Memory allocation: 128 MB - 10GB (1 MB increments)
+    - Maximum execution time: 900 seconds (15 minutes)
+    - Environment variables (4 KB)
+    - Disk capacity in the "function container" (in /tmp): 512 MB to 10GB 
+    - Concurrency executions: 1000 (can be increased)
+Deployment:
+    - Lambda function deployment size (compressed .zip): 50 MB
+    - Size of uncompressed deployment (code + dependencies): 250 MB
+    - Can use the /tmp directory to load other files at startup
+    - Size of environment variables: 4 KB
+
+## 220. Lambda SnapStart
+
+- Improves your Lambda functions performance up to 10x at no extra cost for Java 11 and above
+- When enabled, function is invoked from a pre-initialized state (no function initialization from scratch)
+- When you publish a new version:
+    - Lambda initializes your function
+    - Takes a snapshot of memory and disk state of the initialized function
+    - Snapshot is cached for low-latency access
+
+## 221. Customization at The Edge
+
+- Many modern applications execute some form of the logic at the edge
+- Edge Function:
+    - A code that you write and attach to CloudFront distributions
+    - Runs close to your users to minimize latency
+- CloudFront provides two types: CloudFront Functions & Lambda@Edge
+- You don't have to manage any servers, deployed globally
+- Use case: Customize the CDN content
+- Pay only for what you use
+- Fully serverless
+
+### CloudFront Functions & Lambda@Edge Use Cases
 
 
+
+
+    
 
