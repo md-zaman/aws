@@ -279,7 +279,7 @@ Deployment:
 ### CloudFront Functions & Lambda@Edge Use Cases
     - Website security and Privacy
     - Dynamic Web Application at the Edge
-    - Search Enginer Optimisation (SEO)
+    - Search Engine Optimisation (SEO)
     - Intelligently Route Across Origins and Data Centres
     - Bot Mitigation at the Edge
     - Real-time Image Transformation
@@ -302,7 +302,7 @@ Deployment:
     - Scales to 1000s of requests/second
     - Used to change CloudFront requests and responses:
         - *Viewer Request* - after CloudFront forwards the request to the origin
-        - *Origin Response* - after CloudFront receives the responsefrom the origin
+        - *Origin Response* - after CloudFront receives the response from the origin
         - *Viewer Response* - before CloudFront forwards the response to the viewer
     - Author your functions in one AWS Region (us-east-1), then CloudFront replicate to its locations
 
@@ -322,6 +322,13 @@ Deployment:
 
 
 
+### CloudFront Functions vs. Lambda@Edge - Use Cases
 
-    
+| CloudFront Functions                                                                                                          | Lambda@Edge                                                                         |
+|-------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| Cache key normalization  - Transform request attributes (headers, cookies, query strings, URL) to create an optimal Cache Key | - Longer execution time (several ms)                                                |
+| Header manipulation  - Insert/modify/delete HTTP headers in the request or response                                           | - Adjustable CPU or memory                                                          |
+| URL rewrites or redirects                                                                                                     | - Your code depends on a 3rd libraries (e.g., AWS SDK to access other AWS services) |
+| Request authentication & authorization  - Create and validate user-genereated token (e.g., JWT) to allow/deny request         | - Network access to use external services for processing                            |
+|                                                                                                                               | - File system access or access to the body of HTTP requests                         |
 
